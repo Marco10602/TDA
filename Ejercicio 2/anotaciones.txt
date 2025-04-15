@@ -1,0 +1,73 @@
+=> While no va, me consume mucho tiempo.
+int main() {
+    string s1;
+    string s2;
+    while (true) {
+    
+        cin >> s1;
+        cin >> s2;
+    
+        cout << fixed << setprecision(10) << hiloComu(s1,s2) << endl;
+    }
+    
+    return 0;
+}
+=> Cubro caso de que ingresen caracteres invalidos
+=> Tengo que ver:
+        | Caso cuando son dos casos de distinta longitud
+        | Caso cuando solo tengo caracteres invalidos
+
+
+
+✅ Lógica General:
+1. Contamos cuántos '+' y '-' hay en s1
+
+2. Contamos cuántos '+', '-' y '?' hay en s2
+
+3. Calculamos cuántos '+' y '-' necesitamos agregar
+
+4. Si el número total de signos faltantes no coincide con la cantidad de '?', la probabilidad es 0
+
+Si es válido:
+
+Casos favorables: formas de elegir plus_needed '+' dentro de los '?'
+
+Casos totales: 2^{\text{# de `?`}}
+
+Retornamos casos_favorables / total_casos
+
+CASOS:
+
+  ++--           ++--
+  --++           +??- 
+~> 1           ~>0.5
+
+  +-
+  ?-
+~> 0.5
+
+  ++
+  ?-
+~> 0
+
+  +-+-
+  ??++
+~>0.5
+
+  +-+-
+  ???-
+~>0.375
+
+  +-+-
+  ???+
+~>0.375
+
+  ++--
+  ????
+~>0.3750000000
+
+  +++-
+  ???-
+~>0.5000000000  //mal
+
+==> se avanzo hasta el test 7
